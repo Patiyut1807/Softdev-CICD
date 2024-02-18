@@ -3,24 +3,24 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "NodeJS"
-    }
+    // tools {
+    //     nodejs "NodeJS"
+    // }
 
     stages {
-        stage("clear containers and images if exist") {
-            steps {
-                script {
-                    def runningContainers = sh(script: 'docker ps -q | wc -l', returnStdout: true).trim().toInteger()
+        // stage("clear containers and images if exist") {
+        //     steps {
+        //         script {
+        //             def runningContainers = sh(script: 'docker ps -q | wc -l', returnStdout: true).trim().toInteger()
                     
-                    if (runningContainers > 0) {
-                        sh 'docker stop $(docker ps -a -q)'
-                    } else {
-                        echo "No action required. Running container count: $runningContainers"
-                    }
-                }
-            }
-        }
+        //             if (runningContainers > 0) {
+        //                 sh 'docker stop $(docker ps -a -q)'
+        //             } else {
+        //                 echo "No action required. Running container count: $runningContainers"
+        //             }
+        //         }
+        //     }
+        // }
 
         // stage("build") {
         //     when {
