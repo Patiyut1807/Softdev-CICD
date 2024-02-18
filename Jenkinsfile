@@ -1,7 +1,7 @@
 // CODE_CHANGES = getGitChanges()
 
 pipeline {
-    agent {label: "vm2"}
+    agent {label "vm2"}
 
     // tools {
     //     nodejs "NodeJS"
