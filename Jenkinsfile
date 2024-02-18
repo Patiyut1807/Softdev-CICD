@@ -1,40 +1,40 @@
 // CODE_CHANGES = getGitChanges()
 
 pipeline {
-    agent any
+    agent {label: "vm2"}
 
     // tools {
     //     nodejs "NodeJS"
     // }
 
     stages {
-        // stage("clear containers and images if exist") {
-        //     steps {
-        //         script {
-        //             def runningContainers = sh(script: 'docker ps -q | wc -l', returnStdout: true).trim().toInteger()
+        stage("clear containers and images if exist") {
+            steps {
+                script {
+                    def runningContainers = sh(script: 'docker ps -q | wc -l', returnStdout: true).trim().toInteger()
                     
-        //             if (runningContainers > 0) {
-        //                 sh 'docker stop $(docker ps -a -q)'
-        //             } else {
-        //                 echo "No action required. Running container count: $runningContainers"
-        //             }
-        //         }
-        //     }
-        // }
+                    if (runningContainers > 0) {
+                        sh 'docker stop $(docker ps -a -q)'
+                    } else {
+                        echo "No action required. Running container count: $runningContainers"
+                    }
+                }
+            }
+        }
 
-        // stage("build") {
-        //     when {
-        //         expression {
-        //             // (BRANCH_NAME == 'dev' || BRANCH_NAME == 'main') && CODE_CHANGES
-        //             BRANCH_NAME == 'main'
-        //         }
-        //     }
-        //     steps {
-        //         echo 'building the application...'
-        //         sh 'npm install --global yarn'
-        //         sh 'yarn install'
-        //     }
-        // }
+        stage("build") {
+            when {
+                expression {
+                    // (BRANCH_NAME == 'dev' || BRANCH_NAME == 'main') && CODE_CHANGES
+                    BRANCH_NAME == 'main'
+                }
+            }
+            steps {
+                echo 'building the application...'
+                sh 'npm install --global yarn'
+                sh 'yarn install'
+            }
+        }
 
         stage("test") {
             steps {
@@ -105,3 +105,4 @@ pipeline {
         // }
     }
 }
+
