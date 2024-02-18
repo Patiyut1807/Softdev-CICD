@@ -45,7 +45,7 @@ pipeline {
          stage("create container of simple-api") {
             steps {
                 echo "creating image..."
-                sh "docker run ${IMAGE_NAME} -d"
+                sh "docker run -d ${IMAGE_NAME}"
             }
         }
 
