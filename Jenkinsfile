@@ -31,7 +31,7 @@ pipeline {
         stage("run unit-test") {
             steps {
                 echo "testing the application..."
-                sh "yarn test"
+                sh "npm test"
             }
         }
 
