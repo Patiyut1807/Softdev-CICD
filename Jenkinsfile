@@ -23,12 +23,6 @@ pipeline {
         }
 
         stage("build") {
-            when {
-                expression {
-                    // (BRANCH_NAME == 'dev' || BRANCH_NAME == 'main') && CODE_CHANGES
-                    BRANCH_NAME == 'main'
-                }
-            }
             steps {
                 echo 'building the application...'
                 sh 'npm install --global yarn'
