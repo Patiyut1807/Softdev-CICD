@@ -24,14 +24,14 @@ pipeline {
         stage("install packages") {
             steps {
                 echo "install packages of the application..."
-                sh "npm install"
+                sh "yarn install"
             }
         }
 
         stage("run unit-test") {
             steps {
                 echo "testing the application..."
-                sh "npm test"
+                sh "yarn test"
             }
         }
 
