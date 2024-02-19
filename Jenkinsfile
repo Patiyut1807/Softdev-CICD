@@ -24,7 +24,8 @@ pipeline {
         stage("install packages") {
             steps {
                 echo "install packages of the application..."
-                sh "yarn install"
+                sh 'npm install --global yarn'
+                sh 'yarn install'
             }
         }
 
