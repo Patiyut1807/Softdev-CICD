@@ -1,7 +1,7 @@
 // CODE_CHANGES = getGitChanges()
 
 pipeline {
-    agent {label "vm2"}
+    agent {label "test_vm2"}
     environment{
         GIT_REGISTRY = "registry.gitlab.com/softdev8314607/"
         IMAGE_NAME = "softdevcicd"
