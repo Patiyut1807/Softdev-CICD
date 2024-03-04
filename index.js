@@ -1,22 +1,18 @@
-const express = require('express')
-const {plus} = require('./service');
-const app = express()
-const port = 3000
+const express = require('express');
+const isPrime = require('./prime');
+let app = express();
+
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+    res.send('Hello World!')
+  })
 
-app.get('/getcode', (req, res) => {
-  res.send('Iyeeeeeeee!!!!!!!!!!!!!')
-})
+  app.get('/is_prime/:num', (req, res) => {
+    let {num} = req.params
+    let response = isPrime(num)
+    res.send(response)
+  })
 
-app.get('/plus/:one/:two', (req, res) => {
-  let {one,two} = req.params
-  let result = plus(one, two)
-  res.json({result})
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  app.listen(5000,()=>{
+    console.log("llll");
+  })

@@ -1,6 +1,13 @@
-const {plus} = require('./service');
+let isPrime = require("./prime")
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(plus(1, 2)).toBe(3);
-});
+test('case 17', () => { 
+    expect(isPrime(17)).toBe(true)
+ })
 
+ test('case 36', () => { 
+    expect(isPrime(36)).toBe(false)
+ })
+
+ test('case 13219', () => { 
+    expect(isPrime(13219)).toBe(true)
+ })
